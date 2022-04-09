@@ -3,7 +3,8 @@
 #include<conio.h>
 #include<Windows.h>
 #include<time.h>
-void darsad(void);
+#include<math.h>
+void percent(void);
 void moaadel(void);
 void rooz(void);
 void timer(void);
@@ -41,35 +42,35 @@ void main()
     system("cls");
     char answer[1];
     setTextColor(14);
-    printf("\n\n\n\tlotfan ye adad vared kon : \n\n\n");
+    printf("\n\n\n\t\tPlease Enter a  Number To Continue : \n\n\n");
     setTextColor(11);
     printf("\t\t\t1.");
     setTextColor(7);
-    printf("darsad giri\n\n\n");
+    printf("Calculate the percentage\n\n\n");
     setTextColor(11);
     printf("\t\t\t2.");
     setTextColor(7);
-    printf("mohasebe moaadel\n\n\n");
+    printf("Calculate the GPA\n\n\n");
     setTextColor(11);
     printf("\t\t\t3.");
     setTextColor(7);
-    printf("mohasebe rooz\n\n\n");
+    printf("Calculate the time interval\n\n\n");
     setTextColor(11);
     printf("\t\t\t4.");
     setTextColor(7);
-    printf("timer\n\n\n");
+    printf("Timer\n\n\n");
     setTextColor(11);
     printf("\t\t\t5.");
     setTextColor(7);
-    printf("cornometter\n\n\n");
+    printf("Stopwatch\n\n\n");
     setTextColor(11);
     printf("\t\t\t6.");
     setTextColor(7);
-    printf("shomarande\n\n\n");
+    printf("Counter\n\n\n");
     setTextColor(11);
     printf("\t\t\t7.");
     setTextColor(7);
-    printf("bazi\n\n\n");
+    printf("Game\n\n\n");
     setTextColor(11);
     setTextColor(11);
     printf("\t\t\t8.");
@@ -78,14 +79,15 @@ void main()
     setTextColor(11);
     printf("\t\t\t0.");
     setTextColor(7);
-    printf("exit\n\n\n");
-    printf("\t\t\t\t\tentekhabe man : ");
+    printf("Exit\n\n\n");
+    setTextColor(14);
+    printf("\t\t\t\t\tMy Choice : ");
     setTextColor(11);
     gets(answer);
     if(strcmp(answer,"1")==0)
     {
         system("cls");
-        darsad();
+        percent();
     }
     else if(strcmp(answer,"2")==0)
     {
@@ -133,34 +135,71 @@ void main()
         exit(0);
     }
 }
-void darsad(void)
+void percent(void)
 {
     setTextColor(7);
-    float dorost , ghalat , nazade , kol ;
+    float correct = 0 , incorrect = 0 , NumberOfQuestions = 2 ;
+
+    do
+    {
+        if(NumberOfQuestions < correct + incorrect)
+        {
+            system("cls");
+            setTextColor(12);
+            printf("\n\n\a\tThe Sum of the number of correct and incorrect questions\n\n\tShould Not exceed the total Number of Questions,Please Try again!!!");
+        }
+        do
+        {
+           if(NumberOfQuestions<=0)
+           {
+               system("cls");
+               setTextColor(12);
+               printf("\n\n\a\t The Number Of Questions must be a positive number!! Try again...");
+           }
+           setTextColor(14);
+           printf("\n\n\n\n\tNumber of Questions? : ");
+           setTextColor(11);
+           scanf("%f",&NumberOfQuestions);
+        }while(NumberOfQuestions<=0);
+
+        do
+        {
+            if(correct<0)
+               {
+                   setTextColor(12);
+                   printf("\n\n\a\t The Number Of Correct Questions must be a positive number!! Try again...");
+               }
+            setTextColor(14);
+            printf("\n\n\n\n\tNumber of Correct Answers? : ");
+            setTextColor(11);
+            scanf("%f",&correct);
+        }while(correct<0);
+        do
+        {
+            if(incorrect<0)
+               {
+                   setTextColor(12);
+                   printf("\n\n\a\t The Number Of Incorrect Questions must be a positive number!! Try again...");
+               }
+            setTextColor(14);
+            printf("\n\n\n\n\tNumber of Incorrect Answers? : ");
+            setTextColor(11);
+            scanf("%f",&incorrect);
+        }while(incorrect<0);
+        setTextColor(14);
+    } while (NumberOfQuestions < correct + incorrect);
 
 
-    printf("\n\n\n\n\tchand soaale? : ");
+
+    float percent;
+
+    percent = (((correct * 3) - (incorrect)) / (3*NumberOfQuestions)) * 100 ;
     setTextColor(11);
-    scanf("%f",&kol);
-    setTextColor(7);
-    printf("\n\n\n\n\tchand ta dorost? : ");
-    setTextColor(11);
-    scanf("%f",&dorost);
-    setTextColor(7);
-    printf("\n\n\n\n\tchand ta ghalat? : ");
-    setTextColor(11);
-    scanf("%f",&ghalat);
-    setTextColor(14);
-
-    float darsad;
-
-    darsad = (((dorost * 3) - (ghalat)) / (3*kol)) * 100 ;
-
-    printf("\n\n\n\n\t\t\t\t\t\t\tdarsad = %4.2f%% ",darsad);
+    printf("\n\n\n\n\t\t\t\t\t\t\tYour Percentage = %4.2f%% ",percent);
     setTextColor(10);
-    printf("\n\n\n\n\t\t\t\t\t\t\t    A(LOVE)F");
+    printf("\n\n\n\n\t\t\t\t\t\t\t\t    Despoi");
     setTextColor(7);
-    printf("\n\n\n\n\t\t\t\t\t\t\t    baraye bargasht 0 ro vared kon : ");
+    printf("\n\n\n\n\t\t\t\t\t\t\t    Enter 0 To Return: ");
 
     getchar();
     char exi[1];
@@ -282,17 +321,17 @@ void rooz(void)
 
     y_e = atoi(end);
 
-    char M_E[3] , D_E[3] ;
+    char M_End[3] , D_End[3] ;
 
-    M_E[0] = end[5];
-    M_E[1] = end[6];
-    M_E[2] = '\0';
-    D_E[0] = end[8];
-    D_E[1] = end[9];
-    D_E[2] = '\0';
+    M_End[0] = end[5];
+    M_End[1] = end[6];
+    M_End[2] = '\0';
+    D_End[0] = end[8];
+    D_End[1] = end[9];
+    D_End[2] = '\0';
 
-    m_e = atoi(M_E);
-    d_e = atoi(D_E);
+    m_e = atoi(M_End);
+    d_e = atoi(D_End);
 
     int year , month , day;
 
