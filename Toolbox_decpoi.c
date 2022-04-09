@@ -381,7 +381,23 @@ void TimeInterval(void)
 
         }while(end[10] != '\0');
 
-        b = CheckDate(end);
+        do
+        {
+            b = CheckDate(end);
+            if(b == 1 && atoi(end)<atoi(start))
+            {
+                setTextColor(12);
+                printf("\n\n\a\tThe year in (end date of the course) can not be earlier than the year in (start date of the course)!!\n\n\t Try again...");
+                setTextColor(7);
+                printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
+                setTextColor(11);
+                gets(end);
+                b = CheckDate(end);
+                setTextColor(7);
+
+            }
+
+        }while(b == 1 && atoi(end)<atoi(start));
 
     }while(b != 1);
 
