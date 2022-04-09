@@ -5,7 +5,7 @@
 #include<time.h>
 #include<math.h>
 void percent(void);
-void moaadel(void);
+void gpa(void);
 void rooz(void);
 void timer(void);
 void cornometter(void);
@@ -92,7 +92,7 @@ void main()
     else if(strcmp(answer,"2")==0)
     {
         system("cls");
-        moaadel();
+        gpa();
     }
     else if(strcmp(answer,"3")==0)
     {
@@ -213,65 +213,83 @@ void percent(void)
 
 
 }
-void moaadel(void)
+void gpa(void)
 {
-    printf("\n\n\n   tedad dars : ");
 
-    int number;
+    int number = 1;
+    do
+    {
+       if(number <= 0)
+       {
+           setTextColor(12);
 
-    setTextColor(10);
+           printf("\n\n\a\tThe number of semester Courses must be a positive number!! Please Try again...");
+       }
 
-    scanf("%d",&number);
+        setTextColor(14);
+        printf("\n\n\n   Enter the number of semester course  : ");
+
+
+        setTextColor(11);
+
+        scanf("%d",&number);
+
+    }while(number<=0);
+
+
 
     int counter;
 
-    float nomre[number] , vahed[number] ;
+    float grades[number] , credits[number] ;
 
-    //JAME ZARAYEB
+    //Total number of Credits
     float sum = 0;
 
-    //SOORATE KASR
+    //The numerator
     float sum2 = 0;
 
     setTextColor(7);
 
     for(counter = 0 ; counter <= number - 1 ; counter++)
     {
-         setTextColor(14);
+        setTextColor(14);
 
-        printf("\n\n\t%dth nomre ra vared kon : ",counter+1);
-
-        setTextColor(11);
-
-        scanf("%f",&nomre[counter]);
-
-        setTextColor(7);
-
-        printf("\n\n\t%dth vahed dars : ",counter+1);
+        printf("\n\n\tEnter Your %dth course Score : ",counter+1);
 
         setTextColor(11);
 
-        scanf("%f",&vahed[counter]);
+        scanf("%f",&grades[counter]);
 
         setTextColor(7);
 
-        sum = sum + vahed[counter];
+        printf("\n\n\tHow many Credits does have your %dth course?  : ",counter+1);
 
-        sum2 = sum2 + (nomre[counter]*vahed[counter]) ;
+        setTextColor(11);
+
+        scanf("%f",&credits[counter]);
+
+        setTextColor(7);
+
+        sum = sum + credits[counter];
+
+        sum2 = sum2 + (grades[counter]*credits[counter]) ;
     }
 
     float avg =(float)(sum2 / sum);
 
+    setTextColor(11);
+
+
+    printf("\n\n\n\n\n\t\t\t\t\t**********   Your GPA = %2.2f   **********\n\n\n\n\n",avg);
+
     setTextColor(10);
 
-    system("cls");
-
-    printf("\n\n\n\n\n\t\t\t\t\t**********   avg = %2.2f   **********\n\n\n\n\n",avg);
+    printf("\n\n\t\t\t\t\t\t\t   Despoi   \n\n\n\n\n");
 
     setTextColor(7);
 
     getchar();
-    printf("\n\n\n\n\t\t\t\t\t\t\t    baraye bargasht 0 ro vared kon : ");
+    printf("\n\n\t\t\t\t\t    Enter 0 to return : ");
 
     char exi[1];
     setTextColor(11);
