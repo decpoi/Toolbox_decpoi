@@ -680,6 +680,7 @@ void stopwatch(void)
 }
 void counter(void)
 {
+    fflush(stdin);
     int counter = 0;
     char c;
 
@@ -687,15 +688,19 @@ void counter(void)
     {
 
         setTextColor(14);
-        printf("\n\n\tPress 'y' To count Or 0 to Return : ");
+        printf("\n\n\tPress 'y' button to increment the counter.\n\n\tPress 'n' button to decrement the counter\n\n\tPress '0' button to Return : ");
         setTextColor(11);
         printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\t\tcounter : %d\n\n\n\n\n\t\t\t\t\t\t\t",counter);
         setTextColor(10);
         printf("Decpoi");
         c = getch();
-        if(c == 'y')
+        if(c == 'y' || c == 'Y')
         {
             counter++;
+        }
+        else if(c == 'n' || c == 'N')
+        {
+            counter--;
         }
         else
         {
