@@ -1,4 +1,4 @@
-///decpoi is here...
+//decpoi is here...
 #include<stdio.h>
 #include<conio.h>
 #include<Windows.h>
@@ -641,7 +641,7 @@ void timer(void)
     setTextColor(7);
     printf(":");
     setTextColor(10);
-    printf("00\n\n\n\n\n\t\t\t\t\t\t\tA(LOVE)F");
+    printf("00\n\n\n\n\n\t\t\t\t\t\t\tDecpoi");
     setTextColor(7);
     int j;
     for(j=1 ; j<=15 ; j++)
@@ -651,7 +651,7 @@ void timer(void)
 
     setTextColor(7);
 
-    printf("\n\n\n\n\t\t\t\t\t\t\t    baraye bargasht 0 ro vared kon : ");
+    printf("\n\n\n\n\t\t\t\t\t\t\t    Enter 0 to Return : ");
 
 
 
