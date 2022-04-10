@@ -14,6 +14,7 @@ void game(void);
 void af(void);
 int CheckDate(char a[11]);
 int CheckDate2(int a,int b);
+int CheckTime(char a[8]);
 typedef enum
 {
     BLACK = 0, BLUE = 1, GREEN = 2,
@@ -199,7 +200,7 @@ void percent(void)
     setTextColor(11);
     printf("\n\n\n\n\t\t\t\t\t\t\tYour Percentage = %4.2f%% ",percent);
     setTextColor(10);
-    printf("\n\n\n\n\t\t\t\t\t\t\t\t    Despoi");
+    printf("\n\n\n\n\t\t\t\t\t\t\t\t    Decpoi");
     setTextColor(7);
     printf("\n\n\n\n\t\t\t\t\t\t\t    Enter 0 To Return: ");
 
@@ -286,7 +287,7 @@ void gpa(void)
 
     setTextColor(10);
 
-    printf("\n\n\t\t\t\t\t\t\t   Despoi   \n\n\n\n\n");
+    printf("\n\n\t\t\t\t\t\t\t   Decpoi   \n\n\n\n\n");
 
     setTextColor(7);
 
@@ -532,7 +533,7 @@ void TimeInterval(void)
     printf("\n\n\n\t\t\t\t\t\tHow much time do you have? = %d",remain-1);
     printf("\n\n\n\t\t\t\t\t\tBy considering today How many days are you away from today? = %d",remain);
     setTextColor(10);
-    printf("\n\n\n\t\t\t\t\t\t\t\t\tDespoi\n\n\n\n\n\n\n");
+    printf("\n\n\n\t\t\t\t\t\t\t\t\tDecpoi\n\n\n\n\n\n\n");
     setTextColor(7);
 
     printf("\n\n\t\t\t\t\t\t\t    Enter 0 to return : ");
@@ -553,15 +554,47 @@ void TimeInterval(void)
 }
 void timer(void)
 {
-    setTextColor(14);
-    printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\t\t\t\t\t\ttime ro vared kon(hh:mm:ss) : ");
-    char time[8];
-    setTextColor(11);
-    gets(time);
-    setTextColor(7);
-    int h,m,s;
+
+        char time[8] ;
+        int h,m,s;
+        int p = 0 ; //CheckTime
+        char M[3] , S[3] ;
+
+        do
+        {
+            setTextColor(7);
+            printf("\n\n\n\n\n\t\t\t\t\t\tEnter the Time(hh:mm:ss) : ");
+
+            setTextColor(11);
+            gets(time);
+
+            setTextColor(7);
+
+
+
+
+            do
+            {
+                if(time[8] != '\0')
+                {
+                    setTextColor(12);
+                    printf("\n\n\a\tEnter the input format according to the instructions!! Try again...");
+                    setTextColor(7);
+                    printf("\t\t\t\t\t\tEnter the Time(hh:mm:ss) : ");
+                    setTextColor(11);
+                    gets(time);
+                    setTextColor(7);
+                }
+
+            }while(time[8] != '\0');
+
+            p = CheckTime(time);
+
+        }while(p != 1);
+
+
     h = atoi(time);
-    char M[3] , S[3] ;
+
     M[0] = time[3];
     M[1] = time[4];
     M[2] = '\0' ;
@@ -586,7 +619,7 @@ void timer(void)
                                 setTextColor(7);
                                 printf(":");
                                 setTextColor(10);
-                                printf("%02d\n\n\n\n\n\t\t\t\t\t\t\tA(LOVE)F",s);
+                                printf("%02d\n\n\n\n\n\t\t\t\t\t\t\tDecpoi",s);
                                 Sleep(1000);
                                 system("cls");
                             }
@@ -1465,4 +1498,74 @@ int CheckDate2(int a,int b)
 
 
 }
+
+int CheckTime(char a[8])
+{
+
+    int sum = 0;
+    do
+    {
+       if(a[0]<48 || a[0]>57)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+        else if(a[1]<48 || a[1]>57)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+
+        else if(a[2] != 58)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+
+        else if(a[3]<48 || a[3]>57)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+        else if(a[4]<48 || a[4]>57)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+
+        else if(a[5] != 58)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+
+        else if(a[6]<48 || a[6]>57)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+        else if(a[7]<48 || a[7]>57)
+        {
+            setTextColor(12);
+            printf("\n\a\tEnter the input format according to the instructions!! Try again...");
+            return 0 ;
+        }
+
+
+        else
+        {
+            return 1 ;
+            sum = 1 ;
+        }
+    }while(sum != 1);
+
+}
+
 
