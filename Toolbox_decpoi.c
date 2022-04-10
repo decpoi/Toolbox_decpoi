@@ -13,6 +13,7 @@ void shomarande(void);
 void game(void);
 void af(void);
 int CheckDate(char a[11]);
+int CheckDate2(int a,int b);
 typedef enum
 {
     BLACK = 0, BLUE = 1, GREEN = 2,
@@ -309,113 +310,146 @@ void TimeInterval(void)
 
     int a; //For CheckDate
 
-
-    do
-    {
-        setTextColor(7);
-        printf("\n\n\n\n\tEnter the start of the time period(YYYY/MM/DD) : ");
-
-        setTextColor(11);
-        gets(start);
-        do
-        {
-            if(start[10] != '\0')
-            {
-                setTextColor(12);
-                printf("\n\n\a\tEnter the input format according to the instructions!! Try again...");
-                setTextColor(7);
-                printf("\n\n\n\n\tEnter the start of the time period(YYYY/MM/DD) : ");
-                setTextColor(11);
-                gets(start);
-                setTextColor(7);
-            }
-
-        }while(start[10] != '\0');
-
-        a = CheckDate(start);
-
-    }while(a != 1);
-
-    setTextColor(7);
+    int k;//for CheckDate2
 
     int y_s , m_s , d_s;
 
-    y_s = atoi(start);
-
     char M_S[3] , D_S[3] ;
-
-    M_S[0] = start[5];
-    M_S[1] = start[6];
-    M_S[2] = '\0';
-    D_S[0] = start[8];
-    D_S[1] = start[9];
-    D_S[2] = '\0';
-
-    m_s = atoi(M_S);
-    d_s = atoi(D_S);
-
-    char end[11];
-
-    int b; //For CheckDate
-
-
-    do
-    {
-        setTextColor(7);
-        printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
-
-        setTextColor(11);
-        gets(end);
-        do
-        {
-            if(end[10] != '\0')
-            {
-                setTextColor(12);
-                printf("\n\n\a\tEnter the input format according to the instructions!! Try again...");
-                setTextColor(7);
-                printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
-                setTextColor(11);
-                gets(end);
-                setTextColor(7);
-            }
-
-        }while(end[10] != '\0');
-
-        do
-        {
-            b = CheckDate(end);
-            if(b == 1 && atoi(end)<atoi(start))
-            {
-                setTextColor(12);
-                printf("\n\n\a\tThe year in (end date of the course) can not be earlier than the year in (start date of the course)!!\n\n\t Try again...");
-                setTextColor(7);
-                printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
-                setTextColor(11);
-                gets(end);
-                b = CheckDate(end);
-                setTextColor(7);
-
-            }
-
-        }while(b == 1 && atoi(end)<atoi(start));
-
-    }while(b != 1);
 
     int y_e , m_e , d_e;
 
-    y_e = atoi(end);
-
     char M_End[3] , D_End[3] ;
 
-    M_End[0] = end[5];
-    M_End[1] = end[6];
-    M_End[2] = '\0';
-    D_End[0] = end[8];
-    D_End[1] = end[9];
-    D_End[2] = '\0';
+    do
+    {
+        do
+        {
+            setTextColor(7);
+            printf("\n\n\n\n\tEnter the start of the time period(YYYY/MM/DD) : ");
 
-    m_e = atoi(M_End);
-    d_e = atoi(D_End);
+            setTextColor(11);
+            gets(start);
+
+            setTextColor(7);
+
+
+
+
+            do
+            {
+                if(start[10] != '\0')
+                {
+                    setTextColor(12);
+                    printf("\n\n\a\tEnter the input format according to the instructions!! Try again...");
+                    setTextColor(7);
+                    printf("\n\n\n\n\tEnter the start of the time period(YYYY/MM/DD) : ");
+                    setTextColor(11);
+                    gets(start);
+                    setTextColor(7);
+                }
+
+            }while(start[10] != '\0');
+
+            a = CheckDate(start);
+
+        }while(a != 1);
+
+
+
+        y_s = atoi(start);
+
+        M_S[0] = start[5];
+        M_S[1] = start[6];
+        M_S[2] = '\0';
+
+        D_S[0] = start[8];
+        D_S[1] = start[9];
+        D_S[2] = '\0';
+
+        m_s = atoi(M_S);
+        d_s = atoi(D_S);
+        k = CheckDate2(m_s , d_s);
+
+    }while(k != 1);
+
+    printf("Ok");
+
+
+    /*fflush(stdin);
+
+    char end[11] = "2222/11/11";
+
+    int b; //For CheckDate
+
+    int d; //For CheckDate2
+
+    do
+    {
+        do
+        {
+            setTextColor(7);
+            printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
+
+            setTextColor(11);
+            gets(end);
+
+
+
+            do
+            {
+                if(end[10] != '\0')
+                {
+                    setTextColor(12);
+                    printf("\n\n\a\tEnter the input format according to the instructions!! Try again...");
+                    setTextColor(7);
+                    printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
+                    setTextColor(11);
+                    gets(end);
+                    setTextColor(7);
+                }
+
+            }while(end[10] != '\0');
+
+
+            do
+            {
+                b = CheckDate(end);
+
+                if(b == 1 && d == 1 && atoi(end)<atoi(start))
+                {
+                    setTextColor(12);
+                    printf("\n\n\a\tThe year in (end date of the course) can not be earlier than the year in (start date of the course)!!\n\n\t Try again...");
+                    setTextColor(7);
+                    printf("\n\n\n\n\tEnter the end of the time period(YYYY/MM/DD) : ");
+                    setTextColor(11);
+                    gets(end);
+                    b = CheckDate(end);
+                    setTextColor(7);
+
+                }
+
+            }while(b == 1 && atoi(end)<atoi(start));
+
+        }while(b != 1);
+
+
+
+        y_e = atoi(end);
+
+        M_End[0] = end[5];
+        M_End[1] = end[6];
+        M_End[2] = '\0';
+        D_End[0] = end[8];
+        D_End[1] = end[9];
+        D_End[2] = '\0';
+
+        m_e = atoi(M_End);
+        d_e = atoi(D_End);
+        d = CheckDate2(m_e , d_e);
+    }while(d != 1);
+
+
+
 
     int year , month , day;
 
@@ -469,6 +503,8 @@ void TimeInterval(void)
     {
         main();
     }
+
+    */
 
 }
 void timer(void)
@@ -1178,6 +1214,154 @@ int CheckDate(char a[11])
             sum = 1 ;
         }
     }while(sum != 1);
+
+}
+
+int CheckDate2(int a,int b)
+{
+    int sum = 0 ;
+
+
+    do
+    {
+        if(a == 1)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\aJanuary is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+
+            }
+        }
+        else if(a==2)
+        {
+            if(b<=0 || b>=29)
+            {
+                setTextColor(12);
+                printf("\n\n\t\aFebruary is 28 or 29 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==3)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a March is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+
+        }
+        else if(a==4)
+        {
+            if(b<=0 || b>=31)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a April is 30 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==5)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a May is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==6)
+        {
+            if(b<=0 || b>=31)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a June is 30 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==7)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a July is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==8)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a August is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==9)
+        {
+            if(b<=0 || b>=31)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a September is 30 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==10)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a October is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+
+            }
+        }
+        else if(a==11)
+        {
+            if(b<=0 || b>=31)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a November is 30 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a==12)
+        {
+            if(b<=0 || b>=32)
+            {
+                setTextColor(12);
+                printf("\n\n\t\a December is 31 days, please do not enter wrong number!!try again...");
+                setTextColor(7);
+                return 0;
+            }
+        }
+        else if(a<1 || a>12)
+        {
+            setTextColor(12);
+            printf("\n\n\t\aThe input for the months is incorrect, enter a number between 1 and 12. try again...");
+            setTextColor(7);
+            return 0;
+        }
+        else
+        {
+            sum = 1 ;
+            return 1;
+        }
+
+    }while(sum != 1);
+
 
 }
 
