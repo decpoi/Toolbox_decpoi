@@ -462,6 +462,12 @@ void TimeInterval(void)
                     dd = 1;
                 }
             }
+            if(m_e > m_s)
+            {
+                yy = 1;
+                mm = 1;
+                dd = 1;
+            }
         }
         if(atoi(end)>atoi(start))
         {
