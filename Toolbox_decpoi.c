@@ -308,9 +308,9 @@ void TimeInterval(void)
 
     char start[11]="1111/11/11";
 
-    int a; //For CheckDate
+    int a; //For Start's CheckDate
 
-    int k;//for CheckDate2
+    int k;//for Start's CheckDate2
 
     int y_s , m_s , d_s;
 
@@ -372,17 +372,16 @@ void TimeInterval(void)
 
     }while(k != 1);
 
-    printf("Ok");
 
 
-    /*fflush(stdin);
+
 
     char end[11] = "2222/11/11";
 
     int b; //For CheckDate
 
     int d; //For CheckDate2
-
+    
     do
     {
         do
@@ -504,7 +503,7 @@ void TimeInterval(void)
         main();
     }
 
-    */
+
 
 }
 void timer(void)
@@ -1234,6 +1233,11 @@ int CheckDate2(int a,int b)
                 return 0;
 
             }
+            else
+            {
+                sum = 1 ;
+                return 1;
+            }
         }
         else if(a==2)
         {
@@ -1244,6 +1248,11 @@ int CheckDate2(int a,int b)
                 setTextColor(7);
                 return 0;
             }
+            else
+            {
+                sum = 1 ;
+                return 1;
+            }
         }
         else if(a==3)
         {
@@ -1253,6 +1262,11 @@ int CheckDate2(int a,int b)
                 printf("\n\n\t\a March is 31 days, please do not enter wrong number!!try again...");
                 setTextColor(7);
                 return 0;
+            }
+            else
+            {
+                sum = 1 ;
+                return 1;
             }
 
         }
@@ -1265,6 +1279,11 @@ int CheckDate2(int a,int b)
                 setTextColor(7);
                 return 0;
             }
+            else
+            {
+                sum = 1 ;
+                return 1;
+            }
         }
         else if(a==5)
         {
@@ -1274,6 +1293,11 @@ int CheckDate2(int a,int b)
                 printf("\n\n\t\a May is 31 days, please do not enter wrong number!!try again...");
                 setTextColor(7);
                 return 0;
+            }
+            else
+            {
+                sum = 1 ;
+                return 1;
             }
         }
         else if(a==6)
@@ -1285,6 +1309,11 @@ int CheckDate2(int a,int b)
                 setTextColor(7);
                 return 0;
             }
+            else
+            {
+                sum = 1 ;
+                return 1;
+            }
         }
         else if(a==7)
         {
@@ -1294,6 +1323,11 @@ int CheckDate2(int a,int b)
                 printf("\n\n\t\a July is 31 days, please do not enter wrong number!!try again...");
                 setTextColor(7);
                 return 0;
+            }
+            else
+            {
+                sum = 1 ;
+                return 1;
             }
         }
         else if(a==8)
@@ -1305,6 +1339,11 @@ int CheckDate2(int a,int b)
                 setTextColor(7);
                 return 0;
             }
+            else
+            {
+                sum = 1 ;
+                return 1;
+            }
         }
         else if(a==9)
         {
@@ -1314,6 +1353,11 @@ int CheckDate2(int a,int b)
                 printf("\n\n\t\a September is 30 days, please do not enter wrong number!!try again...");
                 setTextColor(7);
                 return 0;
+            }
+            else
+            {
+                sum = 1 ;
+                return 1;
             }
         }
         else if(a==10)
@@ -1326,6 +1370,11 @@ int CheckDate2(int a,int b)
                 return 0;
 
             }
+            else
+            {
+                sum = 1 ;
+                return 1;
+            }
         }
         else if(a==11)
         {
@@ -1335,6 +1384,11 @@ int CheckDate2(int a,int b)
                 printf("\n\n\t\a November is 30 days, please do not enter wrong number!!try again...");
                 setTextColor(7);
                 return 0;
+            }
+            else
+            {
+                sum = 1 ;
+                return 1;
             }
         }
         else if(a==12)
@@ -1346,6 +1400,12 @@ int CheckDate2(int a,int b)
                 setTextColor(7);
                 return 0;
             }
+
+            else
+            {
+                sum = 1;
+                return 1;
+            }
         }
         else if(a<1 || a>12)
         {
@@ -1354,11 +1414,7 @@ int CheckDate2(int a,int b)
             setTextColor(7);
             return 0;
         }
-        else
-        {
-            sum = 1 ;
-            return 1;
-        }
+
 
     }while(sum != 1);
 
